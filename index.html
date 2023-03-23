@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+    <title>Youtube API</title>
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <h1>What is the reason behind the most viewed Youtube videos</h1>
+        </div>
+
+            <div>
+                <h3>Is there a significant relation between the video length and ratio?</h3>
+            </div>
+                <button id="Button1" onclick="toggleFrames()">Use LOF</button>
+                <iframe id="frame1" src="ratio1.html" style="display: block; width: 100%; height: 800px;"></iframe>
+                <iframe id="frame2" src="ratio2.html" style="display: none; width: 100%; height: 800px;"></iframe>
+
+            <div>
+                <h3>Is there a significant relation between the season and the number of clicks?</h3>
+            </div>
+                <select id="dropdown1" onchange="changeFrame1()">
+                    <option value="fig_2018.html">2018</option>
+                    <option value="fig_2019.html">2019</option>
+                    <option value="fig_2020.html">2020</option>
+                    <option value="fig_2021.html">2021</option>
+                    <option value="fig_2022.html">2022</option>
+                    <option value="gaming.html">Gaming</option>
+                    <option value="entertainment.html">Entertainment</option>
+                    <option value="peopleblogs.html">People&Blogs</option>
+                    <option value="sports.html">Sports</option>
+                </select>
+                <iframe id="myframe1" src="fig_2018.html" width="100%" height="800"></iframe>
+
+                <h3>Is there a significant relation between the view count and the size of a persons face?</h3>
+                <iframe id="thumbnailMain" src="Thumbnail_data.html" width="100%" height="800"></iframe>
+                <p>Click on a cluster to see more Details!</p>
+
+
+                <select id="dropdown2" onchange="changeFrame2()">
+                    <option value="Thumbnail_attributes0.html">cluster 0</option>
+                    <option value="Thumbnail_attributes1.html">cluster 1</option>
+                    <option value="Thumbnail_attributes2.html">cluster 2</option>
+                    <option value="Thumbnail_attributes3.html">cluster 3</option>
+                    <option value="Thumbnail_attributes4.html">cluster 4</option>
+                    <option value="Thumbnail_attributes5.html">cluster 5</option>
+                </select>
+
+                <iframe id="myframe2" src="" width="100%" height="800"></iframe>
+            </div>
+</body>
+
+
+
+
+<style type="text/css">
+   head{
+        font-family: 'Open Sans';
+    }
+    body{
+        font-family: 'Open Sans';
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    h1{
+        height: 200px;
+        font-size: 50px; 
+        width: 100%;
+        text-align: center;
+        line-height: 200px;
+        padding: 0;
+        padding-left: 10px;
+        background: #c4302b;
+        color:white;
+    }
+
+    h3{
+        font-size: 40px;
+        text-align: center;
+        color:black
+    }
+
+        /* Regeln für das Dropdown-Menü */
+     #dropdown1 {
+        font-size: 40px;
+        width: 20%;
+        padding-left: 10px;
+    }
+
+    #dropdown2 {
+        font-size: 40px;
+        width: 20%;
+        padding-left: 10px;
+    }
+    p{
+        font-size: 20px;
+        padding-left: 10px;
+    }
+    #Button1{
+        font-size: 20px;
+        color: white;
+        background-color: #c4302b;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+  background-color: #ba271f;
+    }
+
+    #frame{
+        padding: 20px;
+        margin-top: 50px;
+    }
+
+    </style>
+
+</style>
+
+<script>
+    function changeFrame1() {
+        var selected = document.getElementById("dropdown1").value;
+        var iframe = document.getElementById("myframe1");
+        iframe.src = selected;
+        iframe.onload = function() {
+            iframe.style.height = this.contentWindow.document.body.offsetHeight + 'px';
+        };
+    }
+
+    function changeFrame2() {
+        var selected = document.getElementById("dropdown2").value;
+        var iframe = document.getElementById("myframe2");
+        iframe.src = selected;
+        iframe.onload = function() {
+            iframe.style.height = this.contentWindow.document.body.offsetHeight + 'px';
+        };
+    }
+    function toggleFrames() {
+    var frame1 = document.getElementById("frame1");
+    var frame2 = document.getElementById("frame2");
+    var button = document.getElementById("Button1");
+    if (frame1.style.display === "none") {
+        frame1.style.display = "block";
+        frame2.style.display = "none";
+        button.innerHTML = "Use LOF";
+    } else {
+        frame1.style.display = "none";
+        frame2.style.display = "block";
+        button.innerHTML = "Data reconstruction";
+    }
+    }
+</script>
+
+</html>
